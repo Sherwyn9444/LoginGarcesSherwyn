@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <style>
+            
+            #container{
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 400px;
+                height: 400px;
+                border: 1px dashed red;
+                text-align: center;
+                background-color: bisque;
+            }
+
+            #container div{
+                margin-top: 50px;
+                font-size: 23px;
+            }
+
+            #btn_login{
+                width: 75px;
+                height:75px;
+                border-radius: 50%;
+                border: 1px dashed red;
+                transition: 0.5s;
+            }
+
+            #btn_login:hover{
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1>Login Activity</h1>
+            <div id="lbl_uname">Username</div>
+            <input id="inp_uname" type="text">
+            <br>
+            <div id="lbl_pword">Password</div>
+            <input id="inp_pword" type="password">
+            <br>
+            <div></div>
+            <input id="btn_login" type="button" value="Submit">
+        </div>
+    </body>
+</html>
