@@ -32,16 +32,71 @@
         </style>
     </head>
     <body>
-        <div id="container">
+        <form id="container" name="cont">
             <h1>Login Activity</h1>
             <div id="lbl_uname">Username</div>
-            <input id="inp_uname" type="text">
+            <input id="inp_uname" type="text" name="uname">
             <br>
             <div id="lbl_pword">Password</div>
-            <input id="inp_pword" type="password">
+            <input id="inp_pword" type="password" name="pword">
             <br>
             <div></div>
-            <input id="btn_login" type="button" value="Submit">
-        </div>
+            <input id="btn_login" type="button" value="Submit" name="login">
+        </form>
+        
     </body>
+    <script>
+        var login_form = document.cont;
+        login_form.login.addEventListener("click",SubmitForm);
+        function SubmitForm(){    
+            var login_name = login_form.uname.value;
+            var login_pass = login_form.pword.value;
+            var login_valid = ValidateEmail(login_name) && ValidatePass(login_pass);
+
+            if(login_valid){
+                alert("Login Success!");
+            }
+        }
+        function ValidateEmail(mail){
+            var valid = false;    
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            
+            if(mail.match(mailformat)){
+                valid = true;
+            }
+            
+            if(!valid){
+                alert("You have entered an invalid email address!")
+            }
+            return valid;
+        }
+        function ValidatePass(pass){
+            
+            var format = /[!-\/:-@[-`{-~]/;
+            var checker = [true,false,false];
+            var valid = false;
+            
+            //doesn't check if it is alphanumeric
+            
+            if(pass.match(format)){
+                checker[1] = true;
+            }
+
+            if(pass.length >= 8){
+                checker[2] = true;
+            }
+            
+            if(checker[0] && checker[1] && checker[2]){
+                valid = true;
+            }
+            
+            if(!checker[1]){
+                alert("Password should contain atleast 1 special character");
+            }else if(!checker[2]){
+                alert("Password should contain atleast 8 characters");
+            }
+
+            return valid;
+        }
+    </script>
 </html>
